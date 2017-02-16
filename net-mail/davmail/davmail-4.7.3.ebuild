@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -55,7 +55,7 @@ src_install () {
 }
 
 pkg_postinst() {
-	xdg-desktop-menu install "${FILESDIR}"/davmail.desktop || die "Could not register a menu item"
+	#xdg-desktop-menu install "${FILESDIR}"/davmail.desktop || die "Could not register a menu item"
 
 	chmod 755 /opt/davmail/davmail.sh || die "Could not set file permissions on davmail.sh file"
 
@@ -63,7 +63,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	xdg-desktop-menu uninstall "${FILESDIR}"/davmail.desktop || die "Could not de-register a menu item"
+	#xdg-desktop-menu uninstall "${FILESDIR}"/davmail.desktop || die "Could not de-register a menu item"
 
 	return
 }
