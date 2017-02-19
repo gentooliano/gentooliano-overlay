@@ -67,7 +67,8 @@ src_install() {
 	fi
 
 	insinto "/usr/share/${PNS}/"
-	doins -r tools tools-builder dist
+#	doins -r tools tools-builder dist
+	doins -r hardware tools tools-builder
 
 	insinto "/usr/share/${PNS}/lib"
 	doins -r lib/*.txt lib/theme lib/*.png lib/*.bmp lib/*.key lib/*.so lib/*.ico lib/*.conf
