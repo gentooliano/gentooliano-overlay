@@ -43,7 +43,7 @@ src_compile(){
 }
 
 src_install() {
-	distutils_src_install
+	#distutils_src_install
 
 	dodoc TODO README NEWS AUTHORS
 
