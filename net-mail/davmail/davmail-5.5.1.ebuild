@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit user
+#inherit user
 
 DESCRIPTION="DavMail POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway"
 HOMEPAGE="http://davmail.sourceforge.net/"
