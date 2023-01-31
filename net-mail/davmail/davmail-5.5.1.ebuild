@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
-inherit user
+#inherit user
 
 DESCRIPTION="DavMail POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway"
 HOMEPAGE="http://davmail.sourceforge.net/"
-REV=2652
+REV=3299
 MY_PN="${PN}"
 MY_P="${MY_PN}-${PV}"
 
@@ -32,6 +32,14 @@ RDEPEND=">=virtual/jre-1.5"
 
 S="${WORKDIR}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.5.1.patch"
+)
+
+src_prepare() {
+	default
+}
+
 src_unpack() {
 	unpack ${A}
 }
@@ -54,7 +62,7 @@ src_install () {
 
 pkg_postinst() {
 
-	chmod 755 /opt/davmail/davmail.sh || die "Could not set file permissions on davmail.sh file"
+	chmod 755 /opt/davmail/davmail || die "Could not set file permissions on davmail.sh file"
 
 	return
 }

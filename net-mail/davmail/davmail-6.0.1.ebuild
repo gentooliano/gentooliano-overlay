@@ -2,19 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
-inherit user
+#inherit user
 
 DESCRIPTION="DavMail POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway"
 HOMEPAGE="http://davmail.sourceforge.net/"
-REV=2479
+REV=3390
 MY_PN="${PN}"
 MY_P="${MY_PN}-${PV}"
-ARCH=`uname -m`
 
-URL_32="mirror://sourceforge/${MY_PN}/${MY_PN}-linux-x86-${PV}-${REV}.tgz"
-URL_64="mirror://sourceforge/${MY_PN}/${MY_PN}-linux-x86_64-${PV}-${REV}.tgz"
+URL_32="mirror://sourceforge/${MY_PN}/${MY_PN}-${PV}-${REV}.zip"
+URL_64="mirror://sourceforge/${MY_PN}/${MY_PN}-${PV}-${REV}.zip"
 
 SRC_URI="
         amd64? ( ${URL_64} )
@@ -33,9 +32,16 @@ RDEPEND=">=virtual/jre-1.5"
 
 S="${WORKDIR}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.5.1.patch"
+)
+
+src_prepare() {
+	default
+}
+
 src_unpack() {
 	unpack ${A}
-	mv ${WORKDIR}/${MY_PN}/${MY_PN}-linux-${ARCH}-${PV}-${REV}/ ${WORKDIR}/${PN}
 }
 
 src_install () {
@@ -44,8 +50,8 @@ src_install () {
 	dodir "${TARGETDIR}"
 	insinto "${TARGETDIR}"/
 
-	doins -r ${S}/${MY_PN}-linux-${ARCH}-${PV}-${REV}/*  || die "Install failed!"
-
+    doins -r ${S}/*  || die "Install failed!"
+    
 	fowners root:users -R "${TARGETDIR}" || die "Could not change ownership of /opt/davmail directory."
 
 	insinto /usr/share/pixmaps
@@ -55,15 +61,13 @@ src_install () {
 }
 
 pkg_postinst() {
-	#xdg-desktop-menu install "${FILESDIR}"/davmail.desktop || die "Could not register a menu item"
 
-	chmod 755 /opt/davmail/davmail.sh || die "Could not set file permissions on davmail.sh file"
+	chmod 755 /opt/davmail/davmail || die "Could not set file permissions on davmail.sh file"
 
 	return
 }
 
 pkg_postrm() {
-	#xdg-desktop-menu uninstall "${FILESDIR}"/davmail.desktop || die "Could not de-register a menu item"
 
 	return
 }
