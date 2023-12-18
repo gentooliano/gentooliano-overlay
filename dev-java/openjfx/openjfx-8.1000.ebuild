@@ -1,11 +1,13 @@
 # Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+#EAPI=6
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eapi7-ver flag-o-matic java-pkg-2 java-pkg-simple multiprocessing toolchain-funcs
+#inherit eapi7-ver flag-o-matic java-pkg-2 java-pkg-simple multiprocessing toolchain-funcs
+inherit flag-o-matic java-pkg-2 java-pkg-simple multiprocessing toolchain-funcs
 
 #EGRADLE_VER="4.10.3"
 EGRADLE_VER="4.9"
