@@ -10,10 +10,13 @@ DESCRIPTION="DavMail POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway"
 HOMEPAGE="http://davmail.sourceforge.net/"
 REV=3546
 MY_PN="${PN}"
+MY_PV="${PV}"
 MY_P="${MY_PN}-${PV}"
 
-URL_32="mirror://sourceforge/${MY_PN}/${MY_PN}-${PV}-${REV}.zip"
-URL_64="mirror://sourceforge/${MY_PN}/${MY_PN}-${PV}-${REV}.zip"
+#URL_32="mirror://sourceforge/${MY_PN}/${MY_PN}-${PV}-${REV}.zip"
+#URL_64="mirror://sourceforge/${MY_PN}/${MY_PN}-${PV}-${REV}.zip"
+URL_32="https://sourceforge.net/projects/${MY_PN}/files/${MY_PN}/${MY_PV}/${MY_PN}-${MY_PV}-${REV}.zip/download"
+URL_64="https://sourceforge.net/projects/${MY_PN}/files/${MY_PN}/${MY_PV}/${MY_PN}-${MY_PV}-${REV}.zip/download"
 
 SRC_URI="
         amd64? ( ${URL_64} )
